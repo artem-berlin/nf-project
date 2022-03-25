@@ -1,7 +1,7 @@
 # spring-boot-react-bundle
 
 This is a demo project that shows how it is possible to deploy a react frontend and a Spring Boot backend into a heroku dyno. The following paragraphs describe the actions you need to perform.
-My NF project
+My NF project artem-berlin
 ## Creating an heroku app
 When creating the heroku app I recommend to use the heroku cli. Use the following commands to create the app and add the required buildpack.
 * `heroku create <your-app-name>`
