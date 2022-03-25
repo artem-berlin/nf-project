@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.artem-berlin</groupId>
-	<artifactId>spring-boot-react-bundle-parent</artifactId>
+	<artifactId>nf-project-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>nf-project-parent</name>
 	<packaging>pom</packaging>
