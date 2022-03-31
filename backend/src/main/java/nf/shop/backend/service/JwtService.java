@@ -18,14 +18,14 @@ public class JwtService {
 
     public JwtService(@Value("${app.jwt.secret}") String secret) {
         this.secret = secret;
-    }
+    }    //wert properties!!!
 
     public String createToken(Map<String, Object> claims, String subject){
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plus(Duration.ofHours(4))))
+                .setExpiration(Date.from(Instant.now().plus(Duration.ofHours(48))))
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }

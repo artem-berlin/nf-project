@@ -30,12 +30,12 @@ public class LoginController {
     public String login(@RequestBody LoginData data){
         try {
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    data.getClientname(), data.getPassword()
+                    data.getEmail(), data.getPassword()
             ));
 
             Map<String, Object> claims = new HashMap<>();
             claims.put("roles", getRoles(auth));
-            return jwtService.createToken(claims, data.getClientname());
+            return jwtService.createToken(claims, data.getEmail());
 
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid credentials");
