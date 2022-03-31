@@ -1,0 +1,12 @@
+package nf.shop.backend.model;
+
+import lombok.Data;
+
+@Data
+public class LoginData {
+    private String clientname;
+    private String password;
+
+
+
+}

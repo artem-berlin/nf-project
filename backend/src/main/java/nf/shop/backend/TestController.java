@@ -1,4 +1,4 @@
-package com.example.demo;
+package nf.shop.backend;
 
 import java.util.Arrays;
 import java.util.List;
