@@ -17,10 +17,10 @@ public class MongoClientDetailService implements UserDetailsService {
     private final ClientService clientService;
 
     @Override
-    public UserDetails loadUserByUsername(String clientname) throws UsernameNotFoundException {
-        return clientService.findByClientEmail(clientname)
+    public UserDetails loadUserByUsername(String clientName) throws UsernameNotFoundException {
+        return clientService.findByClientEmail(clientName)
                 .map(userDocument -> new User(userDocument.getEmail(), userDocument.getPassword(), List.of(
                         new SimpleGrantedAuthority("ROLE_" + userDocument.getRole()))))
-                .orElseThrow(()-> new UsernameNotFoundException(clientname + " not found"));
+                .orElseThrow(()-> new UsernameNotFoundException(clientName + " not found"));
     }
 }

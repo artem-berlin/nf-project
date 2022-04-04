@@ -18,18 +18,18 @@ public class ClientService {
     }
 
 
-    public Optional<ClientData> findByClientEmail(String clientname){
-        return clientRepository.findByEmail(clientname);
+    public Optional<ClientData> findByClientEmail(String clientName){
+        return clientRepository.findByEmail(clientName);
     }
 
-//
-//    public ClientRepository loadClientByClientEmail(String clientname)  {
-//        return ClientService.findByClientEmail(clientname)
-//                .map(client -> new Client(client.getClientname(), client.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_" + client.getRole()))) {
+
+//    public ClientRepository loadClientByClientEmail(String clientName)  {
+//        return ClientService.findByClientEmail(clientName)
+//                .map(client -> new Client(client.getClientName(), client.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_" + client.getRole()))) {
 //
 //                }
-//
-//    }
+
+    }
 
 
-}
+

@@ -19,9 +19,7 @@ public class AdminService {
     }
 
 
-    public Optional<AdminData> findByAdminEmail(String adminname){
-        return adminRepository.findByEmail(adminname);
-    }
+
  }
 
 
