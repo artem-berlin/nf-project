@@ -1,4 +1,4 @@
-package nf.shop.backend.model;
+package nf.shop.backend.product;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "product")
 @Data
 @NoArgsConstructor
-public class ProductElement {
+public class ProductData {
 
     @Id
     private String id;
@@ -22,9 +22,10 @@ public class ProductElement {
     private String clientId;
 
 
-    public ProductElement(String description){
+    public ProductData(String description){
         this.description = description;
     }
+
 
 
 }

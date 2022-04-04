@@ -1,7 +1,7 @@
 package nf.shop.backend.controller;
 
+import nf.shop.backend.product.ProductData;
 import nf.shop.backend.service.ProductService;
-import nf.shop.backend.model.ProductElement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +18,24 @@ public class ProductController {
 
 
     @GetMapping
-    public Collection<ProductElement> getProductList(Principal principal) {
+    public Collection<ProductData> getProductList(Principal principal) {
         return productService.getProductList(principal);
     }
 
     @GetMapping("/{id}")
-    public ProductElement getProductElementById(@PathVariable String id){
-        return productService.getProductElementById(id);
+    public ProductData getProductDataById(@PathVariable String id){
+        return productService.getProductDataById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Collection<ProductElement> addProduct(@RequestBody ProductElement productElement, Principal principal) {
-        productService.addProduct(productElement, principal);
+    public Collection<ProductData> addProduct(@RequestBody ProductData productData, Principal principal) {
+        productService.addProduct(productData, principal);
         return productService.getProductList(principal);
     }
 
     @PutMapping("/{id}")
-    public Collection<ProductElement> changeProduct(@PathVariable String id, @RequestBody ProductElement product, Principal principal) {
+    public Collection<ProductData> changeProduct(@PathVariable String id, @RequestBody ProductData product, Principal principal) {
        productService.changeProduct(id, product);
        return productService.getProductList(principal);
     }
@@ -46,7 +46,7 @@ public class ProductController {
     }
 
     @DeleteMapping()
-    public Collection<ProductElement> deleteCheckedProduct(Principal principal) {
+    public Collection<ProductData> deleteCheckedProduct(Principal principal) {
         productService.deleteCheckedProduct();
         return productService.getProductList(principal);
     }

@@ -12,6 +12,6 @@ public class ClientData {
     private String id;
     private String email;
     private String password;
-    private String clientname;   //double???
+    private String clientname;
     private String role = "Client";
 }

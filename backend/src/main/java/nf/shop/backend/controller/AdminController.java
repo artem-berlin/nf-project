@@ -1,11 +1,12 @@
 package nf.shop.backend.controller;
 
+import nf.shop.backend.model.AdminData;
+import nf.shop.backend.service.AdminService;
 import nf.shop.backend.service.ClientService;
 import nf.shop.backend.model.ClientData;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -14,12 +15,13 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final ClientService clientService;
+    private final AdminService adminService;
+    private final PasswordEncoder passwordEncoder;
 
-//    @GetMapping
-//    public String printAdminInfo(Principal principal){
-//        ClientData admin = clientService.findByEmail(principal.getName()).orElseThrow();
-//        return "AdminInfo: " + admin.getEmail();
-//    }
+    @PostMapping
+    public AdminData createAdmin(@RequestBody AdminData admin){
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        return adminService.createAdmin(admin);
+    }
 
 }
