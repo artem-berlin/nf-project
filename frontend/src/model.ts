@@ -1,5 +1,5 @@
 
-export interface Todo {
+export interface Product {
     id: string
     title: string
     text: string
@@ -7,7 +7,7 @@ export interface Todo {
 }
 
 export enum State {
-    Open = 'Open',
-    Done = 'Done'
+    Available = 'Available',
+    NotAvailable = 'NotAvailable'
 }
 

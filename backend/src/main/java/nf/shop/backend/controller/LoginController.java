@@ -27,7 +27,7 @@ public class LoginController {
     private final JwtService jwtService;
 
     @PostMapping
-    public String login(@RequestBody LoginData data){
+    public String login(@RequestBody LoginData data){        //im Object convert, auth variant2
         try {
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     data.getEmail(), data.getPassword()

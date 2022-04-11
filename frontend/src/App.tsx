@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import DetailsPage from "./pages/DetailsPage";
+import LoginPage from "./pages/LoginPage";
+import AuthProvider from "./auth/AuthProvider";
+
 
 function App() {
-
-    const [greeting, setGreeting] = useState('')
-
-    useEffect(() => {
-        fetch('/api/greeting', {
-            method: 'GET',
-            headers: {
-                'Accept': 'text/plain'
-            }
-        })
-            .then(response => response.text())
-            .then(text => setGreeting(text))
-            .catch(err => setGreeting('Da ist etwas schief gelaufen'));
-    }, []);
-
     return (
-        <div>
-            {greeting}
+        <div className="App">
+            <BrowserRouter>
+                <AuthProvider>
+                    <Routes>
+                        <Route path={'/'} element={<MainPage/>}/>
+                        <Route path={'/login'} element={<LoginPage/>}/>
+                        <Route path={'/:productId'} element={<DetailsPage/>}/>
+                    </Routes>
+                </AuthProvider>
+            </BrowserRouter>
         </div>
     );
 }
