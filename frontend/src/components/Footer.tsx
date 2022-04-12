@@ -20,7 +20,7 @@ const Left = styled.div`
   padding: 20px;
 `;
 
-const Logo = styled.p``;
+
 
 const Desc = styled.h3`
   margin: 20px 0px;
@@ -86,7 +86,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        {/*<Logo>Artem</Logo>*/}
+
         <Desc>
           Check my activities in:
         </Desc>
