@@ -2,6 +2,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
 
 
 const Container = styled.div`
@@ -67,6 +68,7 @@ const MenuItem = styled.div`
 `;
 
 const NavBar = () => {
+   const nav= useNavigate();
   return (
     <Container>
       <Wrapper>
@@ -81,8 +83,8 @@ const NavBar = () => {
           <Logo>Artem Web Shop Platform</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem onClick={() => nav("/register")}> REGISTER</MenuItem>
+          <MenuItem onClick={() => nav("/login")}>SIGN IN</MenuItem>
           <MenuItem>
             <Badge badgeContent={0} color="primary">
               <ShoppingCartOutlined />

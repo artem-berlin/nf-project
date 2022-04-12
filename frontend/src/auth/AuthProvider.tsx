@@ -10,10 +10,10 @@ export default function AuthProvider({children}:{children :ReactNode}) {
 
     useEffect(()=>{
         if (token){
-            nav("/")
-        } else {
+            nav("/")}
+      /*  } else {
             nav("/login")
-        }
+        }*/
     }, [token, nav])
 
     const login = (email: string, password : string) => {
