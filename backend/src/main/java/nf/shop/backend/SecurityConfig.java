@@ -47,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.POST,"/api/product").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()
                 .mvcMatchers("/api/admin").hasRole("ADMIN")
-                .antMatchers( "/swagger-resources/**","/swagger-ui./**","/swagger-ui.index.html/","/v3/api-docs/**").permitAll()
+               .mvcMatchers("/api/main").authenticated()
+//                .antMatchers( "/swagger-resources/**","/swagger-ui./**","/swagger-ui.index.html/","/v3/api-docs/**").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                 .mvcMatchers("/api/greeting").permitAll()               //permitAll()  200

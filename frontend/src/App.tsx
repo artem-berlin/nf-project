@@ -5,6 +5,9 @@ import MainPage from "./pages/MainPage";
 import DetailsPage from "./pages/DetailsPage";
 import LoginPage from "./pages/LoginPage";
 import AuthProvider from "./auth/AuthProvider";
+import LandingPage from "./pages/LandingPage";
+
+
 
 
 function App() {
@@ -13,7 +16,8 @@ function App() {
             <BrowserRouter>
                 <AuthProvider>
                     <Routes>
-                        <Route path={'/'} element={<MainPage/>}/>
+                        <Route path={'/'} element={<LandingPage/>}/>
+                        <Route path={'/main'} element={<MainPage/>}/>
                         <Route path={'/login'} element={<LoginPage/>}/>
                         <Route path={'/:productId'} element={<DetailsPage/>}/>
                     </Routes>

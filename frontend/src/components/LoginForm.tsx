@@ -1,7 +1,17 @@
 import {FormEvent, useState} from "react";
 import {registerNewUser} from "../service/apiService";
 import {useAuth} from "../auth/AuthProvider";
-
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { useForm, SubmitHandler, Controller, useFormState } from "react-hook-form";
+import { loginValidation, passwordValidation } from './validation';
+import './LoginForm.css';
+import './lake.jpg';
+interface ISignInForm {
+    loginEmail: string;
+    password: string;
+}
 
 export default function LoginForm(){
     const [loginEmail, setLoginEmail] = useState('')
@@ -11,9 +21,11 @@ export default function LoginForm(){
     const [registerPasswordTwo, setRegisterPasswordTwo] = useState('')
     const [error, setError] = useState('')
 
+    const { handleSubmit, control } = useForm<ISignInForm>();
+    const { errors } = useFormState({control})
     const auth = useAuth()
 
-
+    const onSubmit: SubmitHandler<ISignInForm> = data => console.log(data);
     const Login = (event : FormEvent) => {
         event.preventDefault()
         setError('')
@@ -32,23 +44,78 @@ export default function LoginForm(){
         }
     }
 
+    return (
+        <div className="auth-form">
+            <Typography variant="h4" component="div">
+                Log in
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom component="div" className="auth-form__subtitle">
+                To get full access
+            </Typography>
 
-    return(
-        <div className={'loginForm'}>
-            <h4>Login</h4>
-            <form onSubmit={Login}>
-                <input type="text" placeholder={'LoginEmail'} value={loginEmail} onChange={ev => setLoginEmail(ev.target.value)}/>
-                <input type='password' placeholder={'Password'} value={loginPassword} onChange={ev => setLoginPassword(ev.target.value)}/>
-                <button type={'submit'}>Login</button>
+            <form className="auth-form__form" onSubmit={Login}>
+                <Controller
+                    control={control}
+                    name="loginEmail"
+                    rules={loginValidation}
+
+                    render={({field}) => (
+                        <TextField
+                            label="email"
+                            onChange={(ev) => setLoginEmail(ev.target.value)}
+                            value={field.value}
+                            fullWidth={true}
+                            size="small"
+                            margin="normal"
+                            className="auth-form__input"
+                            error={!!errors.loginEmail?.message}
+                            helperText={errors?.loginEmail?.message}
+                        />
+
+                    )}
+                />
+
+                <Controller
+                    control={control}
+                    name="password"
+                    rules={passwordValidation}
+                    render={({ field }) => (
+                        <TextField
+                            label="password"
+                            onChange={(e) => field.onChange(e)}
+                            value={field.value}
+                            fullWidth={ true }
+                            size="small"
+                            margin="normal"
+                            type="password"
+                            className="auth-form__input"
+                            error={ !!errors?.password?.message }
+                            helperText={ errors?.password?.message }
+                        />
+                    )}
+                />
+                <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth={ true }
+                    disableElevation={ true }
+                    sx={{
+                        marginTop: 2
+                    }}
+                >
+                    Log in
+                </Button>
             </form>
-            <h4>Register</h4>
-            <form onSubmit={Register}>
-                <input type="text" placeholder={'Email'} value={registerEmail} onChange={ev => setRegisterEmail(ev.target.value)}/>
-                <input type='password' placeholder={'Password'} value={registerPasswordOne} onChange={ev => setRegisterPasswordOne(ev.target.value)}/>
-                <input type='password' placeholder={'Passwort repeat'} value={registerPasswordTwo} onChange={ev => setRegisterPasswordTwo(ev.target.value)}/>
-                <button type={'submit'}>Register</button>
-            </form>
-            {error && <h4>{error}</h4>}
+            <div className="auth-form__footer">
+                <Typography variant="subtitle1" component="span">
+                    Any account?{" "}
+                </Typography>
+                <Typography variant="subtitle1" component="span" sx={{ color: 'blue'}}>
+                    Please sigh up
+                </Typography>
+            </div>
+
+            <div className="image"> <img src="./lake.jpg"/>  </div>
         </div>
     )
 }

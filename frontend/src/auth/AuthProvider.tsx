@@ -10,7 +10,7 @@ export default function AuthProvider({children}:{children :ReactNode}) {
 
     useEffect(()=>{
         if (token){
-            nav("/")}
+            nav("/main")}
       /*  } else {
             nav("/login")
         }*/
@@ -18,7 +18,24 @@ export default function AuthProvider({children}:{children :ReactNode}) {
 
     const login = (email: string, password : string) => {
         return loginUser({email:email, password:password})
-            .then(data => setToken(data))                                         //json weg
+      /*  return fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/login`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+        body: JSON.stringify({'email':email, 'password':password})
+        })
+.then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            return response.text()
+        } else if (response.status === 403) {
+            throw new Error(`$('bad-credentials-error')`)
+        } else {
+            throw new Error(`$('error-code') ${response.status}`)
+        }
+})*/
+            .then(data => setToken(data));
+                            //json weg
     }
 
     const logout = () => {
