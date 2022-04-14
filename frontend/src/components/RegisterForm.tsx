@@ -1,5 +1,6 @@
 import {FormEvent, useState} from "react";
 
+/*
 import {registerNewUser} from "../service/apiService";
 import {useAuth} from "../auth/AuthProvider";
 
@@ -40,3 +41,4 @@ export default function LoginForm(){
         </div>
     )
 }
+*/

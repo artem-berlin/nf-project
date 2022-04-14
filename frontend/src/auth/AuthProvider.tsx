@@ -9,10 +9,10 @@ export default function AuthProvider({children}:{children :ReactNode}) {
     const nav = useNavigate()
 
     useEffect(()=>{
-        if (!token){
-            nav("/login")}
+        if (token){
+            nav("/main")}
       /*  } else {
-            nav("/login")
+            nav("/main")
         }*/
     }, [token, nav])
 
