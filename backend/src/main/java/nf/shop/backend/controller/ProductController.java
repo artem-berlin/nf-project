@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping
     public Collection<ProductData> getProductList(Principal principal) {
-        return productService.getProductList(principal);
+        return productService.getProductList();
     }
 
     @GetMapping("/{id}")
@@ -31,13 +31,13 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public Collection<ProductData> addProduct(@RequestBody ProductData productData, Principal principal) {
         productService.addProduct(productData, principal);
-        return productService.getProductList(principal);
+        return productService.getProductList();
     }
 
     @PutMapping("/{id}")
     public Collection<ProductData> changeProduct(@PathVariable String id, @RequestBody ProductData product, Principal principal) {
        productService.changeProduct(id, product);
-       return productService.getProductList(principal);
+       return productService.getProductList();
     }
 
     @DeleteMapping("/{id}")
@@ -48,7 +48,7 @@ public class ProductController {
     @DeleteMapping()
     public Collection<ProductData> deleteCheckedProduct(Principal principal) {
         productService.deleteCheckedProduct();
-        return productService.getProductList(principal);
+        return productService.getProductList();
     }
 
 }

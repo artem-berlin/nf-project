@@ -21,7 +21,17 @@ export const loginUser = ({email, password} : Credentials) =>{
         },
         body: JSON.stringify({'email':email, 'password':password})
     })
-        .then(reponse => reponse.text())                     //text vmesto json(jsonTostring
+        .then(response => {
+            if (response.status >= 200 && response.status < 300) {
+                return response.text()
+            } else if (response.status === 403) {
+                throw new Error(`$('bad-credentials-error')`)
+            } else {
+                throw new Error(`$('error-code') ${response.status}`)
+            }
+
+    })
+
 }
 
 export const getAllProducts = (token: string) => {
@@ -73,7 +83,7 @@ export const updateProduct = (id: string, product : ProductItem, token: string) 
 }
 
 export const getProductById = (id : string, token: string) => {
-     return fetch(`/api/product/${id}`,{
+     return fetch(`/api/main/${id}`,{
          headers: {
              Authorization: `Bearer ${token}`
          }

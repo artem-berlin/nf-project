@@ -3,6 +3,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../auth/AuthProvider";
 
 
 const Container = styled.div`
@@ -69,6 +70,7 @@ const MenuItem = styled.div`
 
 const NavBar = () => {
    const nav= useNavigate();
+   const{token}=useAuth();                ////token hjhs
   return (
     <Container>
       <Wrapper>
@@ -83,8 +85,12 @@ const NavBar = () => {
           <Logo>Artem Web Shop Platform</Logo>
         </Center>
         <Right>
+          {!token &&  <div>
           <MenuItem onClick={() => nav("/register")}> REGISTER</MenuItem>
-          <MenuItem onClick={() => nav("/login")}>SIGN IN</MenuItem>
+
+          <MenuItem onClick={() => nav("/login")}>SIGN IN</MenuItem>     {/* //css*/}
+            </div>
+          }
           <MenuItem>
             <Badge badgeContent={0} color="primary">
               <ShoppingCartOutlined />

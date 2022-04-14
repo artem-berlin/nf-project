@@ -6,30 +6,24 @@ import {getProductById} from "../service/apiService";
 import NavBar from "../components/NavBar";
 import {useAuth} from "../auth/AuthProvider";
 import ProductDetail from "../components/ProductDetail";
+import {Product} from "../interfaces/interfaces";
 
 
 export default function DetailsPage(){
 
     const auth = useAuth()
     const nav = useNavigate()
-    const [currentProduct, setCurrentProduct] = useState({} as ProductItem)
+    const [currentProduct, setCurrentProduct] = useState({} as Product)
     const [error , setError] = useState('')
 
     const id = useParams()
 
-    if (!auth.token){
-        nav("/login")
-    }
-
-
     useEffect(()=>{
         setError('')
         getProductById(id.productId ?? '', auth.token)
-            .then((data : ProductItem) => setCurrentProduct(data))
+            .then((data : Product) => setCurrentProduct(data))
             .catch(e => setError(e.message))
     },[id.productId, auth.token])
-
-
 
     return(
         <div className={'detailsPage'}>

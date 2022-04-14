@@ -43,14 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .authorizeRequests()
-               // .mvcMatchers("/api/client").hasAnyRole("Client", "ADMIN")      not nessecery
-                .mvcMatchers(HttpMethod.POST,"/api/product").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()
+//                .mvcMatchers("/api/client").hasAnyRole("Client", "ADMIN")      not nessecery
+                .mvcMatchers("/api/product").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()
                 .mvcMatchers("/api/admin").hasRole("ADMIN")
-               .mvcMatchers("/api/main").authenticated()
+                .mvcMatchers("/api/main").authenticated()
 //                .antMatchers( "/swagger-resources/**","/swagger-ui./**","/swagger-ui.index.html/","/v3/api-docs/**").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+                .mvcMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
                 .mvcMatchers("/api/greeting").permitAll()               //permitAll()  200
                 .antMatchers("/**").authenticated()
                 .and()

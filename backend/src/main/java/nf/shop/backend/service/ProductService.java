@@ -22,7 +22,7 @@ public class ProductService {
     private final ClientRepository clientRepository;
 
     public void addProduct(ProductData productData, Principal principal) {
-        productData.setClientId(getClientID(principal));
+//        productData.setClientId(getClientID(principal));
         productRepository.save(productData);
     }
 
@@ -34,12 +34,12 @@ public class ProductService {
         return new ProductData();
     }
 
-    public Collection<ProductData>getProductList(Principal principal) {
-        return productRepository.findAllByClientId(getClientID(principal));
+    public Collection<ProductData>getProductList() {
+        return productRepository.findAll();
     }
 
     public void deleteProduct(String id, Principal principal){
-        productRepository.deleteProductDataByIdAndClientId(id, getClientID(principal));
+//        productRepository.deleteProductDataByIdAndClientId(id, getClientID(principal));
     }
 
     public void changeProduct(String id, ProductData changedProduct){
@@ -59,13 +59,13 @@ public class ProductService {
                 .forEach(product -> productRepository.delete(product));
     }
 
-    public List<ProductData> findAllByClientId(String email){
-        Optional<ClientData> elem = clientRepository.findByEmail(email);
-        if (elem.isPresent()){
-            return productRepository.findAllByClientId(elem.get().getId());
-        }
-        throw new IllegalArgumentException("Client doesnt exist!");
-    }
+//    public List<ProductData> findAllByClientId(String email){
+//        Optional<ClientData> elem = clientRepository.findByEmail(email);
+//        if (elem.isPresent()){
+//            return productRepository.findAllByClientId(elem.get().getId());
+//        }
+//        throw new IllegalArgumentException("Client doesnt exist!");
+//    }
 
     private String getClientID(Principal principal) {
         return clientRepository.findByEmail(principal.getName()).get().getId();

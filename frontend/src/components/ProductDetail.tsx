@@ -1,14 +1,15 @@
 import {ProductItem} from "../service/models";
+import {Product} from "../interfaces/interfaces";
 
 
 interface ProductDetailProps{
-    product : ProductItem
+    product : Product
 }
 
 export default function ProductDetail(props : ProductDetailProps){
     return(
         <div className={'productDetail'}>
-            <h3>{props.product.task}</h3>
+            <h3>{props.product.text}</h3>
             <p>{props.product.description}</p>
             <ul>
                 <li>{props.product.status}</li>

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "product")
 @Data
 @NoArgsConstructor
-public class ProductData {
+public class MainData {
 
     @Id
     private String id;
@@ -17,15 +17,14 @@ public class ProductData {
     private String description = "";
     private String city = "";
     private String price = "";     // Integer???
-    private String image ="";
  //   private List<Image> images = new ArrayList<Object>();
     private ProductState state = ProductState.Available;
-//    private String clientId;
+    private String clientId;
 
 
-//    public ProductData(String description){
-//        this.description = description;
-//    }
+    public MainData(String description){
+        this.description = description;
+    }
 
 
 

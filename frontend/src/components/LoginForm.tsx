@@ -30,6 +30,7 @@ export default function LoginForm(){
         event.preventDefault()
         setError('')
         auth.login(loginEmail, loginPassword)
+
             .catch(er => setError(er.message))
     }
 
@@ -53,7 +54,7 @@ export default function LoginForm(){
                 To get full access
             </Typography>
 
-            <form className="auth-form__form" onSubmit={Login}>
+            <form className="auth-form__form" onSubmit={Login}>     {/*//!!!!!!!*/}
                 <Controller
                     control={control}
                     name="loginEmail"
@@ -82,7 +83,7 @@ export default function LoginForm(){
                     render={({ field }) => (
                         <TextField
                             label="password"
-                            onChange={(e) => field.onChange(e)}
+                            onChange={(ev) => setLoginPassword(ev.target.value)}
                             value={field.value}
                             fullWidth={ true }
                             size="small"
@@ -104,7 +105,9 @@ export default function LoginForm(){
                     }}
                 >
                     Log in
+
                 </Button>
+                <div>{error} </div>
             </form>
             <div className="auth-form__footer">
                 <Typography variant="subtitle1" component="span">
@@ -115,7 +118,7 @@ export default function LoginForm(){
                 </Typography>
             </div>
 
-            <div className="image"> <img src="./lake.jpg"/>  </div>
+            {/*<div className="image"> <img src="./lake.jpg"/>  </div>*/}
         </div>
     )
 }
