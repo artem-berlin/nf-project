@@ -34,7 +34,7 @@ export default function LoginForm(){
             .catch(er => setError(er.message))
     }
 
-    const Register = (event : FormEvent) => {
+   /* const Register = (event : FormEvent) => {
         event.preventDefault()
         setError('')
         if (!(registerPasswordOne===registerPasswordTwo)){
@@ -43,7 +43,7 @@ export default function LoginForm(){
             registerNewUser({email: registerEmail, password: registerPasswordOne, passwordAgain: registerPasswordTwo})
                 .catch(er => setError(er.message))
         }
-    }
+    }*/
 
     return (
         <div className="auth-form">

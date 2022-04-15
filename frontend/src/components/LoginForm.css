@@ -31,10 +31,3 @@
     margin-top: 8px;
 }
 
-.image {
-    height: 120vh;
-    width: 50vw;
-
-    background: no-repeat url(./image2.png);
-    background-size: cover;
-}
