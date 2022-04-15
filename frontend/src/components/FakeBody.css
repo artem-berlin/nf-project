@@ -1,0 +1,7 @@
+.image {
+    height: 30vh;
+    width: 30vw;
+
+    background: no-repeat url(./image2.png);
+    background-size: cover;
+}
