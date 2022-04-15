@@ -8,7 +8,7 @@ export default function MainPage(){
 
     return(
         <div className={'main'}>
-            {/*<Announcement/>*/}
+            <Announcement/>
             <NavBar/>
             {/*<FakeBody/>*/}
             <Footer/>

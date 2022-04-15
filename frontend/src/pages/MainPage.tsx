@@ -26,8 +26,10 @@ export default function MainPage(){
         <div className={'main'}>
             <Announcement/>
             <NavBar/>
+            <div className={'products-list'}>
             { products.length > 0 && products.map(p => <ProductOverview key={p.id} product={p} />)}
-            <Footer/>
+            </div>
+                <Footer/>
         </div>
     )
 }

@@ -1,13 +1,7 @@
-.body-form {
-    width: 500vw;
-    height: 100vh;
-    background: #fff;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.image {
+    height: 30vh;
+    width: 30vw;
 
-
+    background: no-repeat url(./image2.png);
+    background-size: cover;
 }

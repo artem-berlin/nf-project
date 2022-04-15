@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { useForm, SubmitHandler, Controller, useFormState } from "react-hook-form";
 import { loginValidation, passwordValidation } from './validation';
 import './LoginForm.css';
-import './lake.jpg';
+
 interface ISignInForm {
     loginEmail: string;
     password: string;
@@ -118,7 +118,7 @@ export default function LoginForm(){
                 </Typography>
             </div>
 
-            {/*<div className="image"> <img src="./lake.jpg"/>  </div>*/}
+
         </div>
     )
 }
