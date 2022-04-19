@@ -2,6 +2,7 @@ import CartProduct from '../CartProduct/CartProduct';
 import { Wrapper } from './Cart.styles';
 import {CartProductType} from "../CartMain/CartMainStyles";
 import {Button} from "@material-ui/core";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -19,6 +20,9 @@ type Props = {
 
 
 const Cart: React.FC<Props> = ({ cartProducts, addToCart, removeFromCart }) => {
+
+    const nav = useNavigate();
+
   const calculateTotal = (products: CartProductType[]) =>
     products.reduce((ack: number, product) => ack + product.amount * product.price, 0);
 
@@ -36,7 +40,7 @@ const Cart: React.FC<Props> = ({ cartProducts, addToCart, removeFromCart }) => {
       ))}
       <h2>Total: ${calculateTotal(cartProducts).toFixed(2)}</h2>
         <div className="buttons">
-            <Button variant="outlined" onClick={() =>('/checkout')}>
+            <Button variant="outlined" onClick={() => nav('/checkout')}>
                 Checkout
             </Button>
         </div>

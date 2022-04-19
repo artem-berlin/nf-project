@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/api/product").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()
                 .mvcMatchers("/api/admin").hasRole("ADMIN")
-                .mvcMatchers("/api/main").permitAll()
+                .mvcMatchers("/api/main").authenticated()
                 .mvcMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico","/*.png").permitAll()
 //                .antMatchers( "/swagger-resources/**","/swagger-ui./**","/swagger-ui.index.html/","/v3/api-docs/**").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/clients").hasRole("ADMIN")

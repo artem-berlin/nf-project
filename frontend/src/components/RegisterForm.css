@@ -1,5 +1,7 @@
 .reg-form {
 
+    width: 50vw;
+    height: 50vh;
     background: #fff;
     padding: 20px;
     display: flex;
@@ -8,9 +10,6 @@
     align-items: center;
     text-align: center;
 
-    height: 40vh;
-    width: 50vw;
-
 }
 
 .reg-form__subtitle {
@@ -18,7 +17,7 @@
 }
 
 .reg-form__form {
-    max-width: 360px;
+    max-width: 90px;
 }
 
 .reg-form__keep-logged-in {

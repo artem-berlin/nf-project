@@ -3,52 +3,43 @@ import Button from '@material-ui/core/Button';
 import { Wrapper } from './CartProduct.styles';
 import {CartProductType} from "../CartMain/CartMainStyles";
 import React from "react";
-import {useNavigate} from "react-router-dom";
-import {useAuth} from "../auth/AuthProvider";
 type Props = {
   product: CartProductType;
   addToCart: (clickedProduct: CartProductType) => void;
   removeFromCart: (id: number) => void;
 
 };
-/*const nav= useNavigate();*/
-const CartProduct: React.FC<Props> = ({ product, addToCart, removeFromCart, }) => (
 
-  <Wrapper>
-    <div>
-      <h3>{product.title}</h3>
-      <div className='information'>
-        <p>Price: ${product.price}</p>
-        <p>Total: ${(product.amount * product.price).toFixed(2)}</p>
+const CartProduct: React.FC<Props> = ({ product, addToCart, removeFromCart, }) => (
+    <Wrapper>
+      <div>
+        <h3>{product.title}</h3>
+        <div className='information'>
+          <p>Price: ${product.price}</p>
+          <p>Total: ${(product.amount * product.price).toFixed(2)}</p>
+        </div>
+        <div className='buttons'>
+          <Button
+              size='small'
+              disableElevation
+              variant='contained'
+              onClick={() => removeFromCart(product.id)}
+          >
+            -
+          </Button>
+          <p>{product.amount}</p>
+          <Button
+              size='small'
+              disableElevation
+              variant='contained'
+              onClick={() => addToCart(product)}
+          >
+            +
+          </Button>
+        </div>
       </div>
-      <div className='buttons'>
-        <Button
-          size='small'
-          disableElevation
-          variant='contained'
-          onClick={() => removeFromCart(product.id)}
-        >
-          -
-        </Button>
-        <p>{product.amount}</p>
-        <Button
-          size='small'
-          disableElevation
-          variant='contained'
-          onClick={() => addToCart(product)}
-        >
-          +
-        </Button>
-      </div>
-    </div>
-    <img src={product.image} alt={product.title} />
-    <div className="buttons">
-    {/*  <Button variant="outlined" onClick={() => nav('/checkout')}>*/}
-      <Button variant="outlined" onClick={() => ('/checkout')}>
-        Checkout
-      </Button>
-    </div>
-  </Wrapper>
+      <img src={product.image} alt={product.title}/>
+    </Wrapper>
 );
 
 export default CartProduct;

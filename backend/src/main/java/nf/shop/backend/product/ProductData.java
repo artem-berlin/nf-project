@@ -17,13 +17,12 @@ public class ProductData {
     private String description = "";
     private String image ="";
     private String price = "";
-
     private int amount ;
- //   private List<Image> images = new ArrayList<Object>();
+
     private ProductState state = ProductState.Available;
 //    private String clientId;
 
-
+//   private List<Image> images = new ArrayList<Object>();
 //    public ProductData(String description){
 //        this.description = description;
 //    }

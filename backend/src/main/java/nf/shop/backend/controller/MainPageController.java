@@ -27,7 +27,10 @@ public class MainPageController {
         return productService.getProductDataById(id);
     }
 
-
+    @GetMapping("/{category}")
+    public ProductData getProductDataByCategory(@PathVariable String category){
+        return productService.getProductDataById(category);
+    }
 
 
 }

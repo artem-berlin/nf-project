@@ -12,18 +12,21 @@ import Badge from '@material-ui/core/Badge';
 import { Wrapper, StyledButton } from '../App.styles';
 import Product from "../Product/Product";
 import {CartProductType} from "./CartMainStyles";
+import {getAllProducts} from "../service/apiService";
+import {useAuth} from "../auth/AuthProvider";
 
 
-const getProducts = async (): Promise<CartProductType[]> =>
-    await (await fetch('api/main')).json();
+const getProducts = async (token: string): Promise<CartProductType[]> => await getAllProducts(token);
 
 const CartMain = () => {
+
+    const {token} = useAuth();
 
     const [cartOpen, setCartOpen] = useState(false);
     const [cartProducts, setCartProducts] = useState([] as CartProductType[]);
     const { data, isLoading, error } = useQuery<CartProductType[]>(
         'products',
-        getProducts
+        () => getProducts(token)
     );
     console.log(data);
     interface Props {}

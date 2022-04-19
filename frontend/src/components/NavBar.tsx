@@ -71,6 +71,7 @@ const MenuItem = styled.div`
 const NavBar = () => {
    const nav= useNavigate();
    const{token}=useAuth();                ////token hjhs
+    const {logout} = useAuth();
   return (
     <Container>
       <Wrapper>
@@ -85,12 +86,17 @@ const NavBar = () => {
           <Logo>Artem Web Shop Platform</Logo>
         </Center>
         <Right>
-          {!token &&  <div>
-          <MenuItem onClick={() => nav("/register")}> REGISTER</MenuItem>
+            {token
+                ?
+                <div>
+                    <MenuItem onClick={logout}> LOGOUT</MenuItem>
+                </div>
+                :
+                <div>
+                    <MenuItem onClick={() => nav("/register")}> REGISTER/SIGN IN</MenuItem>
+                </div>
+            }
 
-          <MenuItem onClick={() => nav("/login")}>SIGN IN</MenuItem>     {/* //css*/}
-            </div>
-          }
          {/* <MenuItem>
             <Badge badgeContent={0} color="primary">
               <ShoppingCartOutlined />

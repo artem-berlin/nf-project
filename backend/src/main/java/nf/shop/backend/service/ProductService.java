@@ -33,6 +33,13 @@ public class ProductService {
         }
         return new ProductData();
     }
+    public ProductData getProductDataByCategory(String category) {
+        Optional<ProductData> product = productRepository.findByCategory(category);
+        if (product.isPresent()){
+            return product.get();
+        }
+        return new ProductData();
+    }
 
     public Collection<ProductData>getProductList() {
         return productRepository.findAll();

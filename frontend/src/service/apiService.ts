@@ -33,7 +33,7 @@ export const loginUser = ({email, password} : Credentials) =>{
     })
 
 }
-
+/*
 export const getAllProducts = (token: string) => {
     return fetch(`/api/product`,{
         headers: {
@@ -42,7 +42,7 @@ export const getAllProducts = (token: string) => {
     })
         .then(response => response.json())
 }
-
+*/
 export const postNewProduct = (task: string, descript: string, token: string) => {
     return fetch(`/api/product`, {
         method: 'POST',
@@ -71,6 +71,15 @@ export const updateProduct = (id: string, product : ProductItem, token: string) 
         .catch(e => console.log(e.message))
 }
 */
+
+export const getAllProducts = (token: string) => {
+    return fetch(`/api/main`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+        .then(response => response.json())
+}
 
 export const getProductById = (id : string, token: string) => {
      return fetch(`/api/main/${id}`,{
