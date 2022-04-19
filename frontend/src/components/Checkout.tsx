@@ -4,13 +4,14 @@ import './Checkout.css';
 import { Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@material-ui/core';
 import React, { useContext } from 'react';
 import CartProduct from "../CartProduct/CartProduct";
+import {useNavigate} from "react-router-dom";
 
-
+// ask Andre HISTORY!!!
 
 interface Props {}
 
 const Checkout: React.FC<Props> = () => {
-
+  const nav= useNavigate();
   /*const { setCart } = useContext(CartProduct);*/
 
   /*function handleCheckout() {
@@ -150,13 +151,13 @@ const Checkout: React.FC<Props> = () => {
           </div>
         </Grid>
         <Grid item xs={12} sm={9}>
-          <Typography variant="body2">
+          <Typography variant="subtitle1">
             Total sum is:
           </Typography>
         </Grid>
       </Grid>
       <div className="buttons">
-        <Button variant="outlined" onClick={handleCheckout}>
+        <Button variant="outlined" onClick={() =>nav ('/confirmation')}>
           Submit
         </Button>
       </div>

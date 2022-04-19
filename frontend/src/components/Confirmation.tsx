@@ -2,15 +2,19 @@
 import './Status.css';
 import { Button, Typography } from '@material-ui/core';
 import React from 'react';
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../auth/AuthProvider";
 
 
 interface Props {}
 
 const Confirmation: React.FC<Props> = props => {
 
+    const nav= useNavigate();
+    const{token}=useAuth();
 
 
-  return (
+    return (
     <div className="Confirmation">
       <div className="content">
         <Typography variant="h4">Success</Typography>
@@ -21,7 +25,7 @@ const Confirmation: React.FC<Props> = props => {
           <em>This is for demo purposes only. You have not been charged, the order is not being processed.</em>
         </Typography>
         <div className="buttons">
-          <Button variant="text" onClick={() =>('/')}>
+          <Button variant="text" onClick={() =>nav ('/main')}>
             Continue Shopping
           </Button>
         </div>
