@@ -48,7 +48,7 @@ public class ProductService {
             ProductData productUnwrapped = product.get();
             productUnwrapped.setTitle(changedProduct.getTitle());
             productUnwrapped.setState(changedProduct.getState());
-            productUnwrapped.setText(changedProduct.getText());
+//            productUnwrapped.setText(changedProduct.getText());
             productRepository.save(productUnwrapped);
         }
     }

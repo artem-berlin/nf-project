@@ -20,9 +20,9 @@ public class ShoppingCart {
     private String id;
     private String shoppingCartName;
     private String username;
-    private List<LineItem> items = new ArrayList<>();
+    private List<CartProduct> items = new ArrayList<>();
 
-    public void addItem(LineItem item) {
+    public void addProduct(CartProduct item) {
         items.add(item);
     }
 

@@ -3,14 +3,17 @@ import Button from '@material-ui/core/Button';
 import { Wrapper } from './CartProduct.styles';
 import {CartProductType} from "../CartMain/CartMainStyles";
 import React from "react";
-
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../auth/AuthProvider";
 type Props = {
   product: CartProductType;
   addToCart: (clickedProduct: CartProductType) => void;
   removeFromCart: (id: number) => void;
-};
 
-const CartProduct: React.FC<Props> = ({ product, addToCart, removeFromCart }) => (
+};
+/*const nav= useNavigate();*/
+const CartProduct: React.FC<Props> = ({ product, addToCart, removeFromCart, }) => (
+
   <Wrapper>
     <div>
       <h3>{product.title}</h3>
@@ -40,6 +43,7 @@ const CartProduct: React.FC<Props> = ({ product, addToCart, removeFromCart }) =>
     </div>
     <img src={product.image} alt={product.title} />
     <div className="buttons">
+    {/*  <Button variant="outlined" onClick={() => nav('/checkout')}>*/}
       <Button variant="outlined" onClick={() => ('/checkout')}>
         Checkout
       </Button>

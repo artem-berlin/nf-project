@@ -13,11 +13,12 @@ public class ProductData {
     @Id
     private String id;
     private String title = "";
-    private String text = "";
+    private String category = "";
     private String description = "";
-    private String city = "";
-    private String price = "";     // Integer???
     private String image ="";
+    private String price = "";
+
+    private int amount ;
  //   private List<Image> images = new ArrayList<Object>();
     private ProductState state = ProductState.Available;
 //    private String clientId;

@@ -17,6 +17,7 @@ export interface AuthInterface {
 
 export interface Product {
     id: string;
+    category:string
     title: string;
     image: string;
     text: string;
