@@ -1,6 +1,6 @@
 .auth-form {
-    width: 50vw;
-    height: 100vh;
+  /*  width: 50vw;*/
+    height: 40vh;
     background: #fff;
     padding: 20px;
     display: flex;

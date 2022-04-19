@@ -1,7 +1,7 @@
 .reg-form {
 
-    width: 50vw;
-    height: 50vh;
+    /*width: 50vw;*/
+    height: 40vh;
     background: #fff;
     padding: 20px;
     display: flex;
@@ -17,7 +17,7 @@
 }
 
 .reg-form__form {
-    max-width: 90px;
+    max-width: 360px;
 }
 
 .reg-form__keep-logged-in {

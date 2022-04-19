@@ -45,7 +45,7 @@ export default function RegisterForm(){
             <Typography variant="subtitle1" gutterBottom component="div" className="reg-form__subtitle">
                 put your credentials here
             </Typography>
-            <form className="reg___form__form" onSubmit={Register}>     {/*//!!!!!!!*/}
+            <form className="reg-form__form" onSubmit={Register}>     {/*//!!!!!!!*/}
                 <Controller
                     control={control}
                     name="registerEmail"
