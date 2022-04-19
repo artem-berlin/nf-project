@@ -91,11 +91,11 @@ const NavBar = () => {
           <MenuItem onClick={() => nav("/login")}>SIGN IN</MenuItem>     {/* //css*/}
             </div>
           }
-          <MenuItem>
+         {/* <MenuItem>
             <Badge badgeContent={0} color="primary">
               <ShoppingCartOutlined />
             </Badge>
-          </MenuItem>
+          </MenuItem>*/}
         </Right>
       </Wrapper>
     </Container>

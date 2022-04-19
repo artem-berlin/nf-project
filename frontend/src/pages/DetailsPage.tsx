@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+/*
 import {ProductItem} from "../service/models";
 import {useNavigate, useParams} from "react-router-dom";
 
@@ -40,4 +41,4 @@ export default function DetailsPage(){
             }
         </div>
     )
-}
+}*/

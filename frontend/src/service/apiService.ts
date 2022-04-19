@@ -1,6 +1,6 @@
-import {ProductItem} from "./models";
-import {Credentials, CredentialsRegister} from "../interfaces/interfaces";
 
+import {Credentials, CredentialsRegister} from "../interfaces/interfaces";
+import {Product} from "../model";
 export const registerNewUser = ({email, password, passwordAgain} : CredentialsRegister) => {
     return fetch(`/api/clients`,{
         method: 'POST',
@@ -56,18 +56,7 @@ export const postNewProduct = (task: string, descript: string, token: string) =>
         .catch(e => console.log(e.message))
 }
 
-export const advanceProduct = (product : ProductItem, token: string) => {
-    return fetch(`/api/product`,{
-        method: 'PUT',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(product)
-    })
-        .then(response => response.json())
-        .catch(e => console.log(e.message))
-}
+/*
 
 export const updateProduct = (id: string, product : ProductItem, token: string) => {
     return fetch(`/api/product/${id}`,{
@@ -81,6 +70,7 @@ export const updateProduct = (id: string, product : ProductItem, token: string) 
         .then(response => response.json())
         .catch(e => console.log(e.message))
 }
+*/
 
 export const getProductById = (id : string, token: string) => {
      return fetch(`/api/main/${id}`,{
