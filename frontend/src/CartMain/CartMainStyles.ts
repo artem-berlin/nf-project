@@ -12,7 +12,7 @@ export const StyledButton = styled(IconButton)`
   top: 20px;
 `;
 export type CartProductType = {
-    id: number;
+    id: string;
     category: string;
     description: string;
     image: string;

@@ -14,6 +14,7 @@ export interface AuthInterface {
     login : (email: string, password: string) => Promise<void>,
     logout: () => void
 }
+/*
 
 export interface Product {
     id: string;
@@ -23,4 +24,4 @@ export interface Product {
     text: string;
     description: string;
     status: string;
-}
+}*/

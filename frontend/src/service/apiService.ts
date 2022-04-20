@@ -1,6 +1,8 @@
 
 import {Credentials, CredentialsRegister} from "../interfaces/interfaces";
-import {Product} from "../model";
+
+
+import {CartProductType} from "../CartMain/CartMainStyles";
 export const registerNewUser = ({email, password, passwordAgain} : CredentialsRegister) => {
     return fetch(`/api/clients`,{
         method: 'POST',
@@ -56,9 +58,9 @@ export const postNewProduct = (task: string, descript: string, token: string) =>
         .catch(e => console.log(e.message))
 }
 
-/*
 
-export const updateProduct = (id: string, product : ProductItem, token: string) => {
+
+export const updateProduct = (id: string, product : CartProductType, token: string) => {
     return fetch(`/api/product/${id}`,{
         method: 'PUT',
         headers: {
@@ -70,7 +72,7 @@ export const updateProduct = (id: string, product : ProductItem, token: string) 
         .then(response => response.json())
         .catch(e => console.log(e.message))
 }
-*/
+
 
 export const getAllProducts = (token: string) => {
     return fetch(`/api/main`,{

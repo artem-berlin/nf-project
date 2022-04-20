@@ -14,7 +14,7 @@ import {useNavigate} from "react-router-dom";
 type Props = {
   cartProducts: CartProductType[];
   addToCart: (clickedProduct: CartProductType) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (id: string) => void;
 
 };
 

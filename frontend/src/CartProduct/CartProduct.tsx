@@ -6,7 +6,7 @@ import React from "react";
 type Props = {
   product: CartProductType;
   addToCart: (clickedProduct: CartProductType) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (id:string) => void;
 
 };
 

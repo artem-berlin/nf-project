@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/main")
@@ -27,9 +28,9 @@ public class MainPageController {
         return productService.getProductDataById(id);
     }
 
-    @GetMapping("/{category}")
-    public ProductData getProductDataByCategory(@PathVariable String category){
-        return productService.getProductDataById(category);
+    @GetMapping("/search")
+    public List<ProductData> getProductDataByCategory(@RequestParam String category){
+        return productService.getProductDataByCategory(category);
     }
 
 

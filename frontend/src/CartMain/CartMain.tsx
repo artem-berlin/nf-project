@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import React, {useEffect, useState} from 'react';
 
 
 import Cart from '../Cart/Cart';
@@ -14,9 +13,28 @@ import Product from "../Product/Product";
 import {CartProductType} from "./CartMainStyles";
 import {getAllProducts} from "../service/apiService";
 import {useAuth} from "../auth/AuthProvider";
+import {Search} from "@material-ui/icons";
+import styled from "styled-components";
 
 
-const getProducts = async (token: string): Promise<CartProductType[]> => await getAllProducts(token);
+const Language = styled.span`
+  font-size: 14px;
+  cursor: pointer;
+
+`;
+
+const SearchContainer = styled.div`
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+`;
+
+const Input = styled.input`
+  border: none;
+  
+`;
 
 const CartMain = () => {
 
@@ -24,10 +42,17 @@ const CartMain = () => {
 
     const [cartOpen, setCartOpen] = useState(false);
     const [cartProducts, setCartProducts] = useState([] as CartProductType[]);
-    const { data, isLoading, error } = useQuery<CartProductType[]>(
-        'products',
-        () => getProducts(token)
-    );
+    const [data, setData] = useState([] as CartProductType[])
+
+    useEffect(() => {
+        getAllProducts(token)
+            .then((products: Array<CartProductType>) => setData(products));
+    }, [token])
+
+    const searchByCategory = () => {
+        // TODO: perform fetch + setData
+    }
+
     console.log(data);
     interface Props {}
     const getTotalProducts = (items: CartProductType[]) =>
@@ -50,7 +75,7 @@ const CartMain = () => {
         });
     };
 
-    const handleRemoveFromCart = (id: number) => {
+    const handleRemoveFromCart = (id: string) => {
         setCartProducts(prev =>
             prev.reduce((ack, item) => {
                 if (item.id === id) {
@@ -62,10 +87,10 @@ const CartMain = () => {
             }, [] as CartProductType[])
         );
     };
-
+/*
     if (isLoading) return <LinearProgress />;
     if (error) return <div>Something went wrong ...</div>;
-
+*/
     return (
         <Wrapper>
             <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
@@ -75,6 +100,11 @@ const CartMain = () => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
+            <Language>EN</Language>
+            <SearchContainer>
+                <Input placeholder="Search" />
+                <Search style={{ color: "gray", fontSize: 16 }} />
+            </SearchContainer>
             <StyledButton onClick={() => setCartOpen(true)}>
                 <Badge badgeContent={getTotalProducts(cartProducts)} color='error'>
                     <AddShoppingCartIcon />

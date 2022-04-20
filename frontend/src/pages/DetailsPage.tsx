@@ -1,20 +1,22 @@
 import {useEffect, useState} from "react";
-/*
-import {ProductItem} from "../service/models";
+
+
 import {useNavigate, useParams} from "react-router-dom";
 
 import {getProductById} from "../service/apiService";
 import NavBar from "../components/NavBar";
 import {useAuth} from "../auth/AuthProvider";
 import ProductDetail from "../components/ProductDetail";
-import {Product} from "../interfaces/interfaces";
+import Product from "../Product/Product";
+import {CartProductType} from "../CartMain/CartMainStyles";
+
 
 
 export default function DetailsPage(){
 
     const auth = useAuth()
     const nav = useNavigate()
-    const [currentProduct, setCurrentProduct] = useState({} as Product)
+    const [currentProduct, setCurrentProduct] = useState({} as CartProductType)
     const [error , setError] = useState('')
 
     const id = useParams()
@@ -22,7 +24,7 @@ export default function DetailsPage(){
     useEffect(()=>{
         setError('')
         getProductById(id.productId ?? '', auth.token)
-            .then((data : Product) => setCurrentProduct(data))
+            .then((data :   CartProductType) => setCurrentProduct(data))
             .catch(e => setError(e.message))
     },[id.productId, auth.token])
 
@@ -41,4 +43,4 @@ export default function DetailsPage(){
             }
         </div>
     )
-}*/
+}

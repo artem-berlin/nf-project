@@ -9,6 +9,7 @@ import AuthProvider from "./auth/AuthProvider";
 import LandingPage from "./pages/LandingPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
+import DetailsPage from "./pages/DetailsPage";
 
 
 
@@ -25,8 +26,8 @@ function App() {
                         <Route path={'/register'} element={<RegisterPage/>}/>
                         <Route path={'/checkout'} element={<CheckoutPage/>}/>
                         <Route path={'/confirmation'} element={<ConfirmationPage/>}/>
-                       {/* <Route path={'/:productId'} element={<DetailsPage/>}/>
-                        <Route path={'/shoppingcart'} element={<DetailsPage/>}/>*/}
+                        <Route path={'/:productId'} element={<DetailsPage/>}/>
+                     {/*   <Route path={'/shoppingcart'} element={<DetailsPage/>}/>*/}
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>

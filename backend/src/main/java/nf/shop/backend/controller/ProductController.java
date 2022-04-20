@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/product")    // für admin controller
 @RequiredArgsConstructor
 @CrossOrigin
 public class ProductController {
@@ -23,7 +24,7 @@ public class ProductController {
     }
 
     @GetMapping("/{category}")
-    public ProductData getProductDataByCategory(@PathVariable String category){
+    public List<ProductData> getProductDataByCategory(@PathVariable String category){
         return productService.getProductDataByCategory(category);
     }
     @GetMapping("/{id}")

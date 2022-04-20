@@ -33,12 +33,8 @@ public class ProductService {
         }
         return new ProductData();
     }
-    public ProductData getProductDataByCategory(String category) {
-        Optional<ProductData> product = productRepository.findByCategory(category);
-        if (product.isPresent()){
-            return product.get();
-        }
-        return new ProductData();
+    public List<ProductData> getProductDataByCategory(String category) {
+        return productRepository.findByCategory(category);
     }
 
     public Collection<ProductData>getProductList() {
@@ -54,7 +50,7 @@ public class ProductService {
         if (product.isPresent()){
             ProductData productUnwrapped = product.get();
             productUnwrapped.setTitle(changedProduct.getTitle());
-            productUnwrapped.setState(changedProduct.getState());
+//            productUnwrapped.setState(changedProduct.getState());
 //            productUnwrapped.setText(changedProduct.getText());
             productRepository.save(productUnwrapped);
         }
@@ -77,7 +73,4 @@ public class ProductService {
     private String getClientID(Principal principal) {
         return clientRepository.findByEmail(principal.getName()).get().getId();
     }
-
-
-
 }
