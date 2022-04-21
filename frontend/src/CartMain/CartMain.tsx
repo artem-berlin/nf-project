@@ -10,31 +10,13 @@ import Badge from '@material-ui/core/Badge';
 
 import { Wrapper, StyledButton } from '../App.styles';
 import Product from "../Product/Product";
-import {CartProductType} from "./CartMainStyles";
-import {getAllProducts} from "../service/apiService";
+import {CartProductType, SearchContainer} from "./CartMainStyles";
+import {getAllProducts, getProductsByCategory} from "../service/apiService";
 import {useAuth} from "../auth/AuthProvider";
-import {Search} from "@material-ui/icons";
+import {Language, Search} from "@material-ui/icons";
 import styled from "styled-components";
+import { Input } from '@material-ui/core';
 
-
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-
-`;
-
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-`;
-
-const Input = styled.input`
-  border: none;
-  
-`;
 
 const CartMain = () => {
 
@@ -43,18 +25,27 @@ const CartMain = () => {
     const [cartOpen, setCartOpen] = useState(false);
     const [cartProducts, setCartProducts] = useState([] as CartProductType[]);
     const [data, setData] = useState([] as CartProductType[])
+    const [category, setCategory] = useState('')
 
     useEffect(() => {
         getAllProducts(token)
             .then((products: Array<CartProductType>) => setData(products));
     }, [token])
 
-    const searchByCategory = () => {
-        // TODO: perform fetch + setData
+    const searchByCategory = (searchCategory?: string) => {
+        getProductsByCategory(token, searchCategory ?? category)
+            .then((products: Array<CartProductType>) => setData(products));
     }
 
+
     console.log(data);
-    interface Props {}
+
+    const searchAll = () =>{
+        getAllProducts(token)
+            .then((products: Array<CartProductType>) => setData(products));
+
+    }
+
     const getTotalProducts = (items: CartProductType[]) =>
         items.reduce((ack: number, item) => ack + item.amount, 0);
 
@@ -66,12 +57,12 @@ const CartMain = () => {
             if (isProductInCart) {
                 return prev.map(item =>
                     item.id === clickedProduct.id
-                        ? { ...item, amount: item.amount + 1 }
+                        ? {...item, amount: item.amount + 1}
                         : item
                 );
             }
             // First time the product is added
-            return [...prev, { ...clickedProduct, amount: 1 }];
+            return [...prev, {...clickedProduct, amount: 1}];
         });
     };
 
@@ -80,17 +71,17 @@ const CartMain = () => {
             prev.reduce((ack, item) => {
                 if (item.id === id) {
                     if (item.amount === 1) return ack;
-                    return [...ack, { ...item, amount: item.amount - 1 }];
+                    return [...ack, {...item, amount: item.amount - 1}];
                 } else {
                     return [...ack, item];
                 }
             }, [] as CartProductType[])
         );
     };
-/*
-    if (isLoading) return <LinearProgress />;
-    if (error) return <div>Something went wrong ...</div>;
-*/
+    /*
+        if (isLoading) return <LinearProgress />;
+        if (error) return <div>Something went wrong ...</div>;
+    */
     return (
         <Wrapper>
             <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
@@ -100,26 +91,34 @@ const CartMain = () => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            <Language>EN</Language>
+            {/*<Language>EN</Language>*/}
             <SearchContainer>
-                <Input placeholder="Search" />
-                <Search style={{ color: "gray", fontSize: 16 }} />
+                <Input placeholder="Search" onChange={(ev) => setCategory(ev.target.value)} />
+                <button onClick={() => searchByCategory()}>Search</button>
+
+                <Search style={{color: "gray", fontSize: 16}}/>
+                <button onClick={searchAll}>All Categories</button>
+                <button onClick={() => searchByCategory('it-books')}>it-books</button>
+                <button onClick={() => searchByCategory('T-shirt')}>T-Shirts</button>
+                <button onClick={() => searchByCategory('cd')}>CDs</button>
             </SearchContainer>
+
             <StyledButton onClick={() => setCartOpen(true)}>
                 <Badge badgeContent={getTotalProducts(cartProducts)} color='error'>
-                    <AddShoppingCartIcon />
+                    <AddShoppingCartIcon/>
                 </Badge>
             </StyledButton>
+
             <Grid container spacing={3}>
                 {data?.map(product => (
                     <Grid item key={product.id} xs={12} sm={4}>
-                        <Product product={product} handleAddToCart={handleAddToCart} />
+                        <Product product={product} handleAddToCart={handleAddToCart}/>
 
                     </Grid>
                 ))}
             </Grid>
         </Wrapper>
     );
-};
+}
 
 export default CartMain;

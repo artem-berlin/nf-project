@@ -3,6 +3,8 @@ import {Credentials, CredentialsRegister} from "../interfaces/interfaces";
 
 
 import {CartProductType} from "../CartMain/CartMainStyles";
+import {set} from "react-hook-form";
+import {useState} from "react";
 export const registerNewUser = ({email, password, passwordAgain} : CredentialsRegister) => {
     return fetch(`/api/clients`,{
         method: 'POST',
@@ -83,6 +85,8 @@ export const getAllProducts = (token: string) => {
         .then(response => response.json())
 }
 
+
+
 export const getProductById = (id : string, token: string) => {
      return fetch(`/api/main/${id}`,{
          headers: {
@@ -110,3 +114,14 @@ export const deleteProduct = (id: string, token: string) => {
         .catch(e => console.log(e.message))
 }
 
+export const getProductsByCategory = ( token: string, category: string) => {
+
+    return fetch(`/api/main/search?category=${category}`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+        .then(response => response.json())
+        .catch(e => console.log(e.message))
+
+}

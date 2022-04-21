@@ -1,0 +1,16 @@
+.productDetail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product {
+    width: 340px;
+    margin: 10px;
+}
+
+.product__image {
+    width: 100%;
+    max-width: 500px;
+}

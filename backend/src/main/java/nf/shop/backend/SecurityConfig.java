@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .mvcMatchers("/api/client").hasAnyRole("Client", "ADMIN")      not nessecery
 //                .mvcMatchers("/api/product").permitAll()        läuft über main
-       //        /* .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()*/
+       //
+                //        /* .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()*/
                 .mvcMatchers("/api/admin").hasRole("ADMIN")
                 .mvcMatchers("/api/main").authenticated()
                 .mvcMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico","/*.png").permitAll()

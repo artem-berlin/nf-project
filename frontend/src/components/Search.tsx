@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+/*import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const Container = styled.div`
   height: 60px;
- 
+
 `;
 
 const Wrapper = styled.div`
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
 `;
 
 const Left = styled.div`
@@ -41,7 +41,7 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
-  
+
 `;
 
 const Center = styled.div`
@@ -51,22 +51,22 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
-  
+
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
- 
+
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
- 
-`;
+
+`;*/
 /*
 export interface ISearchProps {
     onChangeSearchQuery: (searchQuery: string) => void;
