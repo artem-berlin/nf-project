@@ -79,7 +79,7 @@ const NavBar = () => {
 
         </Left>
         <Center>
-          <Logo>Artem Web Shop Platform</Logo>
+          <Logo> Artem's Web Shop</Logo>
         </Center>
         <Right>
             {token
