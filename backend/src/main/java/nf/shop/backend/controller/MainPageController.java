@@ -3,7 +3,6 @@ package nf.shop.backend.controller;
 import lombok.RequiredArgsConstructor;
 import nf.shop.backend.product.ProductData;
 import nf.shop.backend.service.ProductService;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -30,7 +29,7 @@ public class MainPageController {
 
     @GetMapping("/search")
     public List<ProductData> getProductDataByCategory(@RequestParam String category){
-        return productService.getProductDataByCategory(category);
+        return productService.getProductsByCategory(category);
     }
 
 

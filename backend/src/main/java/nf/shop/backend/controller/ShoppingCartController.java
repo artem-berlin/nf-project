@@ -34,9 +34,8 @@ public class ShoppingCartController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Collection<ShoppingCart> addShoppingCart(@RequestBody ShoppingCart shoppingCart){
-        shoppingCartService.addShoppingCart(shoppingCart);
-        return shoppingCartService.getShoppingCartList();
+    public ShoppingCart addShoppingCart(@RequestBody ShoppingCart shoppingCart){
+        return shoppingCartService.addShoppingCart(shoppingCart);
     }
 
     @PutMapping("/{id}")

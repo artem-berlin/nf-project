@@ -18,13 +18,9 @@ public class ShoppingCart {
 
     @Id
     private String id;
-    private String shoppingCartName;
     private String username;
-    private List<CartProduct> items = new ArrayList<>();
+    private List<LineItem> items = new ArrayList<>();
 
-    public void addProduct(CartProduct item) {
-        items.add(item);
-    }
 
 }
 

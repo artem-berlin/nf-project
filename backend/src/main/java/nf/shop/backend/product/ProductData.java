@@ -20,6 +20,19 @@ public class ProductData {
     private int amount ;
 
     private ProductState state = ProductState.Available;
+
+    public ProductData(String title, String category, String description, String image, String price,  int amount) {
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.amount = amount;
+
+
+    }
+
+
 //    private String clientId;
 
 //   private List<Image> images = new ArrayList<Object>();

@@ -40,9 +40,9 @@ const LandingForm: React.FC <Props> = props =>{
                             </Button>
                         </div>
                         <br /> <br />
-                        <strong> Special Thanks to Anre and Thomas </strong>
+                        Special Thanks to Anre and Thomas
                         <br />
-                        <strong>und alle Neue Fische! </strong>
+                        und alle Neue Fische!
                      {/*   <br /> <br />
                         Lets Go!*/}
                     </p>

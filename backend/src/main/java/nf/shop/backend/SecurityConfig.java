@@ -44,16 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
 //                .mvcMatchers("/api/client").hasAnyRole("Client", "ADMIN")      not nessecery
-//                .mvcMatchers("/api/product").permitAll()        läuft über main
+                .mvcMatchers("/api/product").permitAll()
        //
                 //        /* .antMatchers(HttpMethod.GET, "/api/product/**").permitAll()*/
                 .mvcMatchers("/api/admin").hasRole("ADMIN")
                 .mvcMatchers("/api/main").authenticated()
                 .mvcMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico","/*.png").permitAll()
 //                .antMatchers( "/swagger-resources/**","/swagger-ui./**","/swagger-ui.index.html/","/v3/api-docs/**").permitAll()
-                .mvcMatchers(HttpMethod.POST, "/api/clients").hasRole("ADMIN")
+                .mvcMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                .mvcMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
                 .mvcMatchers("/api/greeting").permitAll()               //permitAll()  200
 //                .antMatchers("/**").authenticated()
                 .and()

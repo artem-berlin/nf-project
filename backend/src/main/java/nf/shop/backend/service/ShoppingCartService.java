@@ -24,10 +24,7 @@ public class ShoppingCartService {
     }
 
     public ShoppingCart addShoppingCart(ShoppingCart shoppingCart) {
-        if (shoppingCartRepository.findByShoppingCartName(shoppingCart.getShoppingCartName()).isEmpty()){
-            return shoppingCartRepository.save(shoppingCart);
-        }
-        throw new IllegalArgumentException("Shopping Cart exist yet");
+        return shoppingCartRepository.save(shoppingCart);
     }
 
     public ShoppingCart getShoppingCartById(String id) {
@@ -38,9 +35,8 @@ public class ShoppingCartService {
     public void changeShoppingCart(String id, ShoppingCart changedShoppingCart) {
         Optional<ShoppingCart> shoppingCart = shoppingCartRepository.findById(id);
         if (shoppingCart.isPresent()){
-            ShoppingCart catUnwrapped = shoppingCart.get();
-            catUnwrapped.setShoppingCartName(changedShoppingCart.getShoppingCartName());
-            shoppingCartRepository.save(catUnwrapped);
+            ShoppingCart cartUnwrapped = shoppingCart.get();
+            shoppingCartRepository.save(cartUnwrapped);
         }
     }
 }

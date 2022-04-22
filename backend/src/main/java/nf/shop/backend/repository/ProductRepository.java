@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends MongoRepository<ProductData, String> {
     List<ProductData> findByCategory(String category);
-//        List<ProductData> findAllByClientId(String clientID);
+
 //        void deleteProductDataByIdAndClientId(String id, String clientID);
 
 

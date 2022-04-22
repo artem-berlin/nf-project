@@ -1,7 +1,9 @@
 package nf.shop.backend.model;
 
-import lombok.Data;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+@AllArgsConstructor
 @Data
 public class RegisterData
 {

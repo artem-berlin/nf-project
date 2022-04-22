@@ -1,7 +1,6 @@
 package nf.shop.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import nf.shop.backend.model.ClientData;
 import nf.shop.backend.product.ProductState;
 import nf.shop.backend.repository.ClientRepository;
 import nf.shop.backend.product.ProductData;
@@ -21,9 +20,12 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ClientRepository clientRepository;
 
+
+
     public void addProduct(ProductData productData, Principal principal) {
 //        productData.setClientId(getClientID(principal));
         productRepository.save(productData);
+
     }
 
     public ProductData getProductDataById(String id) {
@@ -33,7 +35,7 @@ public class ProductService {
         }
         return new ProductData();
     }
-    public List<ProductData> getProductDataByCategory(String category) {
+    public List<ProductData> getProductsByCategory(String category) {
         return productRepository.findByCategory(category);
     }
 
