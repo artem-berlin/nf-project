@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface ShoppingCartRepository extends MongoRepository<ShoppingCart, String> {
-    Optional<ShoppingCart> findByShoppingCartName(String shoppingCartName);
+
 
 
 }

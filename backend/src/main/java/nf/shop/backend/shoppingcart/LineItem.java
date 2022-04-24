@@ -4,8 +4,9 @@ import lombok.Data;
 
 @Data
 public class LineItem {
- private String productId; private String title;
+    private String productId;
+    private String title;
     private String category;
-   private String price;
+    private String price;
 
 }
