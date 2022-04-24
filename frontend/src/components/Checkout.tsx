@@ -2,9 +2,10 @@
 
 import './Checkout.css';
 import { Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React, {useContext, useState} from 'react';
 import CartProduct from "../CartProduct/CartProduct";
 import {useNavigate} from "react-router-dom";
+import {CartProductType} from "../CartMain/CartMainStyles";
 
 // ask Andre HISTORY!!!
 
@@ -12,16 +13,15 @@ interface Props {}
 
 const Checkout: React.FC<Props> = () => {
   const nav= useNavigate();
-  /*const { setCart } = useContext(CartProduct);*/
+  const [cartProducts, setCartProducts] = useState([] as CartProductType[]);
+
 
   /*function handleCheckout() {
-    setCart([]);
+
     ;
   }*/
 
-  function handleCheckout() {
 
-  }
 
   return (
     <div className="Checkout">

@@ -5,12 +5,6 @@ import {Button} from "@material-ui/core";
 import {useNavigate} from "react-router-dom";
 
 
-
-
-
-
-
-
 type Props = {
   cartProducts: CartProductType[];
   addToCart: (clickedProduct: CartProductType) => void;
