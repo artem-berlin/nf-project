@@ -1,24 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import MainPage from "./pages/MainPage";
+
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/LoginPage";
+import AuthProvider from "./auth/AuthProvider";
+import LandingPage from "./pages/LandingPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import ConfirmationPage from "./pages/ConfirmationPage";
+import DetailsPage from "./pages/DetailsPage";
+
+
+
 
 function App() {
-
-    const [greeting, setGreeting] = useState('')
-
-    useEffect(() => {
-        fetch('/api/greeting', {
-            method: 'GET',
-            headers: {
-                'Accept': 'text/plain'
-            }
-        })
-            .then(response => response.text())
-            .then(text => setGreeting(text))
-            .catch(err => setGreeting('Da ist etwas schief gelaufen'));
-    }, []);
-
     return (
-        <div>
-            {greeting}
+        <div className="App">
+            <BrowserRouter>
+                <AuthProvider>
+                    <Routes>
+                        <Route path={'/'} element={<LandingPage/>}/>
+                        <Route path={'/main'} element={<MainPage/>}/>
+                        <Route path={'/login'} element={<LoginPage/>}/>
+                        <Route path={'/register'} element={<RegisterPage/>}/>
+                        <Route path={'/checkout/:shoppingCartId'} element={<CheckoutPage/>}/>
+                        <Route path={'/confirmation'} element={<ConfirmationPage/>}/>
+                        <Route path={'/:productId'} element={<DetailsPage/>}/>
+                     {/*   <Route path={'/shoppingcart'} element={<DetailsPage/>}/>*/}
+                    </Routes>
+                </AuthProvider>
+            </BrowserRouter>
         </div>
     );
 }
