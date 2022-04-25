@@ -14,3 +14,11 @@ export interface AuthInterface {
     login : (email: string, password: string) => Promise<void>,
     logout: () => void
 }
+export interface LineItem{
+    productId : string;
+    price : string;
+}
+export interface ShoppingCart{
+    id : string;
+    items: LineItem[];
+}

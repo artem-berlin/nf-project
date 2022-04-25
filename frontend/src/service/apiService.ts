@@ -1,5 +1,5 @@
 
-import {Credentials, CredentialsRegister} from "../interfaces/interfaces";
+import {Credentials, CredentialsRegister, LineItem} from "../interfaces/interfaces";
 
 
 import {CartProductType} from "../CartMain/CartMainStyles";
@@ -123,5 +123,26 @@ export const getProductsByCategory = ( token: string, category: string) => {
     })
         .then(response => response.json())
         .catch(e => console.log(e.message))
+
+}
+export const checkoutTotal = (token: string,lineItems : LineItem[])=> {
+    return fetch ('/api/shoppingcart', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ items: lineItems })
+    })
+}
+export const getShoppingCartById =( token : string, id : string) =>{
+    return fetch('/api/shoppingcart/'+ id, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+        })
+        .then (response => response.json())
+        .catch(e => console.log(e.message))
+
 
 }

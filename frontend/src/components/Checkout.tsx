@@ -6,14 +6,20 @@ import React, {useContext, useState} from 'react';
 import CartProduct from "../CartProduct/CartProduct";
 import {useNavigate} from "react-router-dom";
 import {CartProductType} from "../CartMain/CartMainStyles";
+import {ShoppingCart} from "../interfaces/interfaces";
 
 // ask Andre HISTORY!!!
 
-interface Props {}
+interface Props {
+  shoppingCart: ShoppingCart
+}
 
-const Checkout: React.FC<Props> = () => {
+const Checkout: React.FC<Props> = (props: Props) => {
   const nav= useNavigate();
-  const [cartProducts, setCartProducts] = useState([] as CartProductType[]);
+
+  const totalPrice = props.shoppingCart.items
+      .map(lineItem => lineItem.price)
+      .reduce((p, c) => '' + (parseInt(p) + parseInt(c)), '0');
 
 
   /*function handleCheckout() {
@@ -152,7 +158,7 @@ const Checkout: React.FC<Props> = () => {
         </Grid>
         <Grid item xs={12} >
           <Typography variant="subtitle1">
-               Total sum is $ :
+               Total sum is $ {totalPrice}
           </Typography>
         </Grid>
       </Grid>
