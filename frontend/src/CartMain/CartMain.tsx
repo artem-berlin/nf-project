@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
-
 import Cart from '../Cart/Cart';
 import Drawer from '@material-ui/core/Drawer';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
@@ -14,7 +12,7 @@ import {CartProductType, SearchContainer} from "./CartMainStyles";
 import {getAllProducts, getProductsByCategory} from "../service/apiService";
 import {useAuth} from "../auth/AuthProvider";
 import {Language, Search} from "@material-ui/icons";
-import styled from "styled-components";
+
 import { Input } from '@material-ui/core';
 
 
@@ -78,10 +76,7 @@ const CartMain = () => {
             }, [] as CartProductType[])
         );
     };
-    /*
-        if (isLoading) return <LinearProgress />;
-        if (error) return <div>Something went wrong ...</div>;
-    */
+
     return (
         <Wrapper>
             <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
@@ -91,7 +86,7 @@ const CartMain = () => {
                     removeFromCart={handleRemoveFromCart}
                 />
             </Drawer>
-            {/*<Language>EN</Language>*/}
+
             <SearchContainer>
                 <Input placeholder="Search" onChange={(ev) => setCategory(ev.target.value)} />
                 <button onClick={() => searchByCategory()}>Search</button>

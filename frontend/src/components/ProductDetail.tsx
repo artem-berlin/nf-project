@@ -17,7 +17,7 @@ export default function ProductDetail(props : ProductDetailProps){
         <div className="ItemDetails">
 
         <Grid container className="container">
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} sm={6}>
                 <div className="image-container">
                    {/* <img className="item-details-image" src={item.largeImage} alt={item.title} />*/}
                     <Link to={`/${props.product.id}`} >

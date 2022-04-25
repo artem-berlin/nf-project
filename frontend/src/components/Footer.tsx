@@ -3,8 +3,9 @@ import {
   LinkedIn,
   MailOutline,
   Phone,
-  Room,
+  GitHub,
   Twitter,
+    Room,
 } from "@material-ui/icons";
 import styled from "styled-components";
 
@@ -100,7 +101,9 @@ const Footer = () => {
           <SocialIcon color="55ACEE">
             <Twitter />
           </SocialIcon>
-
+          <SocialIcon color="000000">
+            <GitHub />
+          </SocialIcon>
         </SocialContainer>
       </Left>
       <Center>

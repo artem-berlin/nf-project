@@ -31,7 +31,7 @@ const LandingForm: React.FC <Props> = props =>{
                 </Slide>
                 <Slide right>
                     <p className="description">
-                        Welcome to my students project:
+                        Welcome to my capstone project:
                         <br /> <br />
                         <br /> <br />
                         <div className="buttons">
@@ -40,11 +40,10 @@ const LandingForm: React.FC <Props> = props =>{
                             </Button>
                         </div>
                         <br /> <br />
-                        Special Thanks to Anre and Thomas
-                        <br />
+                        Special Thanks to André  and Thomas
+                        <br /><br />
                         und alle Neue Fische!
-                     {/*   <br /> <br />
-                        Lets Go!*/}
+
                     </p>
 
                 </Slide>

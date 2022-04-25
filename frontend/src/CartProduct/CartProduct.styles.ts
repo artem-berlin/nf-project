@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   .buttons {
     display: flex;
     justify-content: space-between;
+    
   }
 
   img {

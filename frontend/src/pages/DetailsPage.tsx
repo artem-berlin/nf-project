@@ -9,6 +9,7 @@ import {useAuth} from "../auth/AuthProvider";
 import ProductDetail from "../components/ProductDetail";
 import Product from "../Product/Product";
 import {CartProductType} from "../CartMain/CartMainStyles";
+import Announcement from "../components/Announcement";
 
 
 
@@ -30,6 +31,7 @@ export default function DetailsPage(){
 
     return(
         <div className={'detailsPage'}>
+            <Announcement/>
             <NavBar/>
 
 

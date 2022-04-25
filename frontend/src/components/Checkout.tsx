@@ -152,7 +152,7 @@ const Checkout: React.FC<Props> = () => {
         </Grid>
         <Grid item xs={12} >
           <Typography variant="subtitle1">
-               Total sum is :
+               Total sum is $ :
           </Typography>
         </Grid>
       </Grid>
